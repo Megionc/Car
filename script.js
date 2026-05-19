@@ -3,13 +3,13 @@
 // ======================
 
 const carSwiper1 = new Swiper(".carSwiper1", {
-  loop: true,
+  loop: false,
   speed: 800,
 
-  autoplay: {
-    delay: 3000,
-    disableOnInteraction: false,
-  },
+  // autoplay: {
+  //   delay: 3000,
+  //   disableOnInteraction: false,
+  // },
 
   pagination: {
     el: ".carSwiper1 .swiper-pagination",
@@ -18,18 +18,56 @@ const carSwiper1 = new Swiper(".carSwiper1", {
 });
 
 const carSwiper2 = new Swiper(".carSwiper2", {
-  loop: true,
+  loop: false,
   speed: 800,
 
-  autoplay: {
-    delay: 3500,
-    disableOnInteraction: false,
-  },
+  // autoplay: {
+  //   delay: 3500,
+  //   disableOnInteraction: false,
+  // },
 
   pagination: {
     el: ".carSwiper2 .swiper-pagination",
     clickable: true,
   },
+});
+
+// ======================
+// COLOR SWITCH
+// ======================
+
+document.querySelectorAll(".car-card").forEach(card => {
+
+  let swiper;
+
+  if (card.querySelector(".carSwiper1")) {
+    swiper = carSwiper1;
+  }
+
+  if (card.querySelector(".carSwiper2")) {
+    swiper = carSwiper2;
+  }
+
+  const colorButtons = card.querySelectorAll(".color-btn");
+
+  colorButtons.forEach(button => {
+
+    button.addEventListener("click", () => {
+
+      const slideIndex = Number(button.dataset.slide);
+
+      swiper.slideTo(slideIndex);
+
+      colorButtons.forEach(btn => {
+        btn.classList.remove("active");
+      });
+
+      button.classList.add("active");
+
+    });
+
+  });
+
 });
 
 // ======================
@@ -52,24 +90,22 @@ const hoursEl = document.getElementById("hours");
 const minutesEl = document.getElementById("minutes");
 const secondsEl = document.getElementById("seconds");
 
-// дата окончания (8 дней)
 const endDate = new Date();
 endDate.setDate(endDate.getDate() + 9);
 
 function updateTimer() {
 
   const now = new Date().getTime();
-
   const distance = endDate - now;
 
   if (distance < 0) {
 
     clearInterval(timerInterval);
 
-    daysEl.innerHTML = "00";
-    hoursEl.innerHTML = "00";
-    minutesEl.innerHTML = "00";
-    secondsEl.innerHTML = "00";
+    daysEl.textContent = "00";
+    hoursEl.textContent = "00";
+    minutesEl.textContent = "00";
+    secondsEl.textContent = "00";
 
     return;
   }
@@ -93,10 +129,10 @@ function updateTimer() {
     / 1000
   );
 
-  daysEl.innerHTML = String(days).padStart(2, "0");
-  hoursEl.innerHTML = String(hours).padStart(2, "0");
-  minutesEl.innerHTML = String(minutes).padStart(2, "0");
-  secondsEl.innerHTML = String(seconds).padStart(2, "0");
+  daysEl.textContent = String(days).padStart(2, "0");
+  hoursEl.textContent = String(hours).padStart(2, "0");
+  minutesEl.textContent = String(minutes).padStart(2, "0");
+  secondsEl.textContent = String(seconds).padStart(2, "0");
 }
 
 updateTimer();
@@ -171,10 +207,8 @@ forms.forEach(form => {
     const button = form.querySelector("button");
 
     button.disabled = true;
+    button.textContent = "Отправка...";
 
-    button.innerHTML = "Отправка...";
-
-    // имитация отправки
     setTimeout(() => {
 
       alert("Заявка успешно отправлена!");
@@ -182,8 +216,7 @@ forms.forEach(form => {
       form.reset();
 
       button.disabled = false;
-
-      button.innerHTML = "Отправить";
+      button.textContent = "Отправить";
 
       $.fancybox.close();
 
@@ -228,13 +261,9 @@ const header = document.querySelector(".header");
 window.addEventListener("scroll", () => {
 
   if (window.scrollY > 40) {
-
     header.classList.add("header-fixed");
-
   } else {
-
     header.classList.remove("header-fixed");
-
   }
 
 });
@@ -248,15 +277,11 @@ const buttons = document.querySelectorAll(".btn");
 buttons.forEach(button => {
 
   button.addEventListener("mouseenter", () => {
-
     button.style.transform = "translateY(-3px)";
-
   });
 
   button.addEventListener("mouseleave", () => {
-
-    button.style.transform = "translateY(0px)";
-
+    button.style.transform = "translateY(0)";
   });
 
 });

@@ -244,7 +244,8 @@ a {
 /* TIMER */
 
 .timer-section {
-  padding: 50px 0;
+  margin-top: 35px;
+  margin-bottom: 18px;
   background: white;
 }
 
@@ -254,6 +255,11 @@ a {
   justify-content: space-between;
   gap: 30px;
   flex-wrap: wrap;
+}
+
+.bloc-timer{
+  display: grid;
+  gap: 3px;
 }
 
 .timer-text {
@@ -305,9 +311,9 @@ a {
 }
 
 .car-card {
-    width: 480px;
+  width: 480px;
   background: white;
-  padding: 30px;
+  padding: 40px;
   border-radius: 20px;
   position: relative;
   transition: .3s;
@@ -323,14 +329,24 @@ a {
 
 .car-badge {
   position: absolute;
-  top: -12px;
+  top: -23px;
   right: 30px;
   background: #11d7d0;
+  padding: 7px 20px;
+  /* height: 42px; */
+  justify-content: center;
+  align-items: center;
+  display: grid;
+}
+
+.car-badge p{
   color: white;
-  padding: 10px 16px;
-  border-radius: 8px;
   font-size: 12px;
-  font-weight: 700;
+  font-weight: 500;
+  text-align: center;
+  span{
+    color: #000;
+  }
 }
 
 .car-card h3 {
@@ -348,6 +364,7 @@ a {
 }
 
 .swiper {
+  width: 100%;
   margin-bottom: 25px;
   height: 280px;
 }
@@ -357,6 +374,27 @@ a {
   height: 100%;
   object-fit: contain;
   display: block;
+}
+
+.car-colors{
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  margin-top:15px;
+}
+
+.color-btn{
+  width:28px;
+  height:28px;
+  border-radius:50%;
+  border:2px solid #ddd;
+  cursor:pointer;
+  transition:.3s;
+}
+
+.color-btn.active{
+  transform:scale(1.2);
+  border-color:#111;
 }
 
 .car-features {
