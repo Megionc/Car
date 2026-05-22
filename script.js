@@ -6,11 +6,6 @@ const carSwiper1 = new Swiper(".carSwiper1", {
   loop: false,
   speed: 800,
 
-  // autoplay: {
-  //   delay: 3000,
-  //   disableOnInteraction: false,
-  // },
-
   pagination: {
     el: ".carSwiper1 .swiper-pagination",
     clickable: true,
@@ -20,11 +15,6 @@ const carSwiper1 = new Swiper(".carSwiper1", {
 const carSwiper2 = new Swiper(".carSwiper2", {
   loop: false,
   speed: 800,
-
-  // autoplay: {
-  //   delay: 3500,
-  //   disableOnInteraction: false,
-  // },
 
   pagination: {
     el: ".carSwiper2 .swiper-pagination",
@@ -191,7 +181,7 @@ const forms = document.querySelectorAll(".popup-form");
 
 forms.forEach(form => {
 
-  form.addEventListener("submit", function(e) {
+  form.addEventListener("submit", function (e) {
 
     e.preventDefault();
 
@@ -234,7 +224,7 @@ const links = document.querySelectorAll('a[href^="#"]');
 
 links.forEach(link => {
 
-  link.addEventListener("click", function(e) {
+  link.addEventListener("click", function (e) {
 
     const href = this.getAttribute("href");
 
